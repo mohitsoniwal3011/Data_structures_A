@@ -9,7 +9,7 @@ struct node * create_list()
 	int i,n;
 	printf("enter the number of nodes you want to create \n");
 	scanf("%d",&n);
-	if(i==0){
+	if(n==0){
 		struct node *head=NULL;
 		return head;
 	}	
