@@ -57,8 +57,6 @@ void display(struct node *start)
 struct node *insert(struct node *start,float coff,int expo)
 {
 	struct node *newnode=(struct node *)malloc(sizeof(struct node ));
-	//printf("enter the cofficient and exponent of the term to be inserted:\n");
-	//scanf("%f%d",&newnode->cofficient,&newnode->exponent);
 	newnode->cofficient=coff;
 	newnode->exponent=expo;
 	newnode->next=NULL;
@@ -68,22 +66,22 @@ struct node *insert(struct node *start,float coff,int expo)
 		//newnode->next=NULL;
 		return start;
 	}
-	if(newnode->exponent > start->exponent){
+
+	if(newnode->exponent >= start->exponent){
 		newnode->next=start;
+		start=newnode;
 		start=newnode;
 		return start;
 	}
 	struct node *temp,*p=start;
 	while(p->next != NULL){
 		temp=p->next;
-		//commiting a change here.
 		if(temp->exponent <= newnode->exponent){
 			newnode->next=temp;
 			p->next=newnode;
 			return start;
 		}
 		p=p->next;
-		//printf("inside the loop :coff=%f  expo=%d \n",p->cofficient,p->exponent);
 	}
 	if(newnode->exponent < p->exponent){
 		p->next=newnode;
