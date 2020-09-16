@@ -46,7 +46,7 @@ struct node *create_list()
 		temp->next=newnode;
 		temp=newnode;
 	}
-	return head;	
+	return last;	
 	
 }
 void display(struct node *last)
