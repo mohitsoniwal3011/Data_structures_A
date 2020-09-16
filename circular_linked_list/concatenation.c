@@ -47,9 +47,6 @@ struct node *create_list()
 		temp=newnode;
 	}
 }
-
-
-
 struct node *concat(struct node *last1,struct node *last2)
 {
     if(last1 == NULL){
