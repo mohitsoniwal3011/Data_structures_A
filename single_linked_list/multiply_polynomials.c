@@ -60,9 +60,7 @@ struct node *insert(struct node *start,float coff,int expo)
 	newnode->exponent=expo;
 	newnode->next=NULL;
 	if(start ==NULL){
-		//printf("inserting in the empty list...\n");
 		start=newnode;
-		//newnode->next=NULL;
 		return start;
 	}
 
@@ -92,7 +90,7 @@ struct node *multiply_polynomials(struct node *start1,struct node*start2 )
 {
 	struct node *p3_start=NULL;
 	if(start1 ==NULL || start2 == NULL){
-		printf("the multiplied polynomial is a zero polynomial");
+		printf("the multiplied polynomial is a zero polynomial\n");
 		return p3_start;
 	}
 	struct node *p1=NULL,*p2=NULL;
@@ -107,7 +105,7 @@ struct node *combine_terms(struct node *start)
 {
 	struct node *p=NULL,*temp=NULL;
 	if(start== NULL){
-		printf("empty list");
+		printf("empty list\n");
 		return start;
 	}
 	float coff;
