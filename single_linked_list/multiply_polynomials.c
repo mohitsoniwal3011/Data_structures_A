@@ -16,7 +16,6 @@ struct node *create_list()
 		struct node *head=NULL;
 		return head;
 	}	
-	//scanf("%d",&n);
 	int i=1;
 	newnode=(struct node *)malloc(sizeof(struct node));
 	printf("enter the cofficient and expression of term %d:\n",i);
@@ -61,7 +60,7 @@ struct node *insert(struct node *start,float coff,int expo)
 	newnode->exponent=expo;
 	newnode->next=NULL;
 	if(start ==NULL){
-		printf("inserting in the empty list...\n");
+		//printf("inserting in the empty list...\n");
 		start=newnode;
 		//newnode->next=NULL;
 		return start;
@@ -104,6 +103,31 @@ struct node *multiply_polynomials(struct node *start1,struct node*start2 )
 	}
 	return p3_start;
 }
+struct node *combine_terms(struct node *start)
+{
+	struct node *p=NULL,*temp=NULL;
+	if(start== NULL){
+		printf("empty list");
+		return start;
+	}
+	float coff;
+	p=start;
+	while(p->next != NULL){
+		temp=p->next;
+		if(p->exponent == temp->exponent){
+		coff=p->cofficient  +temp->cofficient;
+		p->cofficient=coff;
+		p->next=temp->next;
+		temp->next=NULL;
+		free(temp);
+		temp=NULL;
+		}
+		else {
+		p=p->next;
+		}
+	}
+	return start;
+}
 int main () 
 {
 	struct node *p1_head,*p2_head,*p3_head;
@@ -111,8 +135,9 @@ int main ()
 	p1_head=create_list();
 	p2_head=(struct node *)malloc(sizeof(struct node ));
 	p2_head=create_list();
-	//p3_head=(struct node *)malloc(sizeof(struct node ));
 	p3_head=multiply_polynomials(p1_head,p2_head);
+	p3_head=combine_terms(p3_head);
+	printf("the resultant polynomials is \n");
 	display(p3_head);
 	return 0;
 }	
