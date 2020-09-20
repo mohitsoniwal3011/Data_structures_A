@@ -45,7 +45,7 @@ int main ()
 }
 void insert()
 {
-    struct node *newnode =malloc(sizeof(struct node));
+    struct node *newnode =(struct node *)malloc(sizeof(struct node));
     if(newnode == NULL){
         printf("stack overflow\n");
         return ;
